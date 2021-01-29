@@ -153,7 +153,7 @@ function truncate(string) {
   const result = [];
 
   for (const char of string) {
-    if (result.length === 0 || char !== result[result.length - 1]) {
+    if (result.length === 0 || char !== result[result.length - 1]) {    
       result.push(char);
     }
   }

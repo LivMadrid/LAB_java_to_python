@@ -63,29 +63,85 @@ censor_vowels("hello")
 
 def snake_to_camel(string):
     camelCase = []
-
+    new_string = ("")
     for word in string.split('_'):
-        camelCase.append(f'{word[0].upper()}{word[1:]} ')
+        if camelCase == []:
+            camelCase.append(word)
+        else:
+            camelCase.append(f'{word[0].upper()}{word[1:]} ')
 
+
+    return print(new_string.join(camelCase))
 
         
 
-    return print(camelCase)
+    
 
 snake_to_camel('snake_camels')
 
 
 def longest_word_length(words):
-    pass  # TODO: replace this line with your code
+    longest = len(words[0])
 
+    for word in words:
+        if longest < len(word):
+            longest = len(word)
+
+    return print(longest)
+
+longest_word_length(['jellyfish', 'zebra'])
 
 def truncate(string):
-    pass  # TODO: replace this line with your code
+    
+    result = []
+    result1 = ""
+    for char in string:
+        if len(result) == 0 or char != result[len(result)-1]:
+            result.append(char)
 
+    return print(result1.join(result))
+
+truncate('aaaabbbbcccca')    
 
 def has_balanced_parens(string):
-    pass  # TODO: replace this line with your code
+    
+    parens = 0
+
+    for char in string:
+        if char == '(':
+            parens += 1
+        elif char == ')':
+            parens -= 1
+        elif parens < 0:
+            return false
+    return print(parens == 0)
+
+has_balanced_parens('(Oh no!)(')
 
 
 def compress(string):
-    pass  # TODO: replace this line with your code
+    compressed = []
+    compressed1 = ""
+
+    curr_char = ""
+    char_count = 0
+
+    for char in string:
+        if char != curr_char:
+            compressed.append(curr_char)
+
+            if char_count > 1:
+                compressed.append(str(char_count))
+
+            curr_char = char
+            char_count = 0
+        
+        char_count += 1   
+
+    compressed.append(curr_char)
+    if char_count > 1:
+        compressed.append(str(char_count))   
+
+    return print(compressed1.join(compressed))  
+
+compress('Hello, world! Cows go moooo...')
